@@ -3,7 +3,7 @@ twonkyserver-apkg
 
 Build Twonkyserver package for ASUSTOR NAS 
 
-# Build Twonkyserver package for ASUSTOR NAS #
+# Build Twonkyserver package #
 
 run `bin/apkg-create-package.sh --help` to see how to invoke the script.
 
