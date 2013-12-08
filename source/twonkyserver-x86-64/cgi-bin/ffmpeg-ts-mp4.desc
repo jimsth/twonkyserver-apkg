@@ -1,0 +1,8 @@
+# transcode quicktime video to MP4 H264 video
+#(c) 2009 by PacketVideo
+exec: ffmpeg -threads 2 -i $infile -vcodec libx264 -b 7500k -refs 1 -bf 3 -acodec libfaac -ac 2 $outfile
+# capabilities
+from=video/*
+to=video/mp4
+asynchronous
+priority=normal

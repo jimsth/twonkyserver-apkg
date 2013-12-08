@@ -1,0 +1,8 @@
+# transcode video
+#(c) 2008 by PacketVideo
+exec: ffmpeg -i $infile -vcodec flv -f flv -s qvga -vb 256000 -ab 64000 -ac 2 -ar 44100 $outfile
+# capabilities
+from=video/quicktime
+to=video/flv
+asynchronous
+priority=idle

@@ -1,0 +1,13 @@
+./bin-i386
+./etc/twonkyserver7-default.ini
+./etc/twonkyserver7.ini
+./lib-i386
+./twonkyserver-i386
+./CONTROL/icon-disable.png
+./CONTROL/icon.png
+./CONTROL/start-stop.sh
+./CONTROL/changelog.txt
+./CONTROL/config.json
+./CONTROL/pre-install.sh
+./CONTROL/description.txt
+./CONTROL/post-install.sh

@@ -1,0 +1,6 @@
+# transcode audio (flac to wav)
+#(c) 2010 by PacketVideo
+exec: flac $infile -d -o $outfile 
+# capabilities
+from=audio/x-flac
+to=audio/x-wav

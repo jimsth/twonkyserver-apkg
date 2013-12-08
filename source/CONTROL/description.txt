@@ -1,0 +1,1 @@
+Twonky Server is DLNA-compliant UPnP AV server software available for all the modern operating systems as well as mobile platforms such as Android. Twonky Server can be used to share and stream media to most UPnP AV or DLNA-compliant clients, in addition to non-UPnP devices through the HTML, RSS, and JSON supported front-ends.

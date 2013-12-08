@@ -1,0 +1,8 @@
+# transcode video (mpeg to wmv)
+#(c) 2008 by PacketVideo
+exec: ffmpeg -i $infile -vcodec wmv2 -acodec wmav2 -ab 128k -vb 2000k $outfile
+# capabilities
+from=video/mpeg
+to=video/x-ms-wmv
+asynchronous
+priority=idle
