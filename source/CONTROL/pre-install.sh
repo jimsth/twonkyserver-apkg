@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PKG_ETC_DIR="$APKG_PKG_DIR/etc"
+export PKG_ETC_DIR="$APKG_PKG_DIR/etc"
 
 case "$APKG_PKG_STATUS" in
 	install)

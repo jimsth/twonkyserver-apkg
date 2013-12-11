@@ -1,17 +1,19 @@
 #!/bin/sh -e
-HOST_ARCH=$(uname -m)
-NAME="Twonky Server"
-PKG_PATH=/usr/local/AppCentral/twonkyserver
-PKG_DAEMON="$PKG_PATH/twonkyserver/twonkystarter"
-USER=root
-STOP_TIMEOUT=10
-DB_PATH=/volume1/.@twonkymedia
-CONFIG_FILE="$PKG_PATH/etc/twonkyserver7.ini"
-LOG_FILE="$DB_PATH/log/twonkyserver7.log"
-VAR_TWONKY=/var/twonky
+export HOST_ARCH=$(uname -m)
+export NAME="Twonky Server"
+
+export PKG_PATH=/usr/local/AppCentral/twonkyserver
+export DB_PATH=/volume1/.@twonkymedia
+export VAR_TWONKY=/var/twonky
+export PKG_DAEMON="$PKG_PATH/twonkyserver/twonkystarter"
+export CONFIG_FILE="$PKG_PATH/etc/twonkyserver7.ini"
+export LOG_FILE="$DB_PATH/log/twonkyserver7.log"
+
+export USER=root
+export STOP_TIMEOUT=10
 
 # Default options for daemon
-OPTIONS="-inifile $CONFIG_FILE -enableweb 2 -powersavemode 1 -logfile $LOG_FILE"
+export OPTIONS="-inifile $CONFIG_FILE -enableweb 2 -powersavemode 1 -logfile $LOG_FILE"
 
 # export PATH="${PATH:+$PATH:}/sbin"
 export LD_LIBRARY_PATH="$PKG_PATH/lib"

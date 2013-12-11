@@ -32,6 +32,12 @@
 	  "start-order":95,
 	  "stop-order":35
 	},
+	"share-folder": [
+		{
+			"description": "All the media files go here",
+			"name": "Media"
+		}
+	],
 	"prerequisites":{
 	  "enable-service":[],
 	  "restart-service":[]
