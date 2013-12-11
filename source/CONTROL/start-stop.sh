@@ -6,6 +6,7 @@ export DB_PATH=/volume1/.@twonkymedia
 export PKG_PATH=/usr/local/AppCentral/twonkyserver
 export VAR_TWONKY=/var/twonky
 
+export DATA_PATH="$DB_PATH/twonkyserver"
 export CONFIG_FILE="$PKG_PATH/etc/twonkyserver7.ini"
 export LOG_FILE="$DB_PATH/log/twonkyserver7.log"
 export PKG_DAEMON="$PKG_PATH/twonkyserver/twonkystarter"
@@ -15,7 +16,7 @@ export GROUP=administrators
 export STOP_TIMEOUT=10
 
 # Default options for daemon
-export OPTIONS="-inifile $CONFIG_FILE -enableweb 2 -powersavemode 1 -logfile $LOG_FILE"
+export OPTIONS="-inifile $CONFIG_FILE -appdata $DATA_PATH -enableweb 2 -powersavemode 1 -logfile $LOG_FILE"
 
 # export PATH="${PATH:+$PATH:}/sbin"
 export LD_LIBRARY_PATH="$PKG_PATH/lib"

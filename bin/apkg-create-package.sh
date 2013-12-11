@@ -23,11 +23,11 @@ echo "creates Optware asustor package for the specified NAS architecture"
 }
 
 # check if we got root permissions
-#if [ ! "$(whoami)" = "root" ]; then
-#	echo "[ERROR] script has to be run as root!"
-#	usage
-#	exit 1
-#fi
+if [ ! "$(whoami)" = "root" ]; then
+	echo "[ERROR] script has to be run as root!"
+	usage
+	exit 1
+fi
 
 # simplest command line argument handling
 if [ $# -ne 1 ]; then
