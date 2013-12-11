@@ -1,0 +1,8 @@
+# transcode dvr-ms video to MPEG-2
+#(c) 2009 by PacketVideo
+exec: ffmpeg -i $infile -vcodec mpeg2video -vb 1000k $outfile
+# parameters
+from=video/x-ms-dvr
+to=video/mpeg
+asynchronous
+priority=idle

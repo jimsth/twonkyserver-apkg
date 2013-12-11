@@ -23,11 +23,11 @@ echo "creates Optware asustor package for the specified NAS architecture"
 }
 
 # check if we got root permissions
-if [ ! "$(whoami)" = "root" ]; then
-	echo "[ERROR] script has to be run as root!"
-	usage
-	exit 1
-fi
+#if [ ! "$(whoami)" = "root" ]; then
+#	echo "[ERROR] script has to be run as root!"
+#	usage
+#	exit 1
+#fi
 
 # simplest command line argument handling
 if [ $# -ne 1 ]; then
@@ -51,46 +51,54 @@ fi
 
 BASE_DIR=$APP_PATH/..
 SOURCE_DIR="${BASE_DIR}/source"
-DEST_DIR="${BASE_DIR}/build"
+BUILD_DIR="${BASE_DIR}/build"
 TMP_DIR=$(mktemp -d -t fluffyXXXXXX)
 
-#echo "TMP dir: $TMP_DIR"
-# exit
-
 for arch in $APK_ARCH; do
-	echo "[INFO] clean the output folder"
-	if [ -d ${DEST_DIR} ]; then
-		rm -rf ${DEST_DIR}/*
-	else
-		mkdir -p ${DEST_DIR}
-	fi
-	echo "[INFO] copy the files for the specified arch to SOURCE directory"
-	rsync -ar --files-from="${BASE_DIR}/filelist.${arch}" ${SOURCE_DIR}/ ${DEST_DIR}/
-	if [ $? -ne 0 ]; then
-		echo "[ERROR] couldn't copy files... abort"
+	if [ ! -f ${SOURCE_DIR}/twonkyserver-${arch}/twonkystarter ]; then
+		echo "[ERROR] can't find Twonky Server executable"
+		echo "[ERROR] did you forget to unpack the Twonky Server files into " \
+			"${SOURCE}/twonkyserver-${arch} directory?"
 		exit 4
 	fi
-	echo "[INFO] set ${arch} in config.json"
-	sed -i -e "s/##ARCH##/${arch}/" ${DEST_DIR}/CONTROL/config.json
+	echo "[INFO] clean the output folder"
+	if [ -d ${BUILD_DIR} ]; then
+		rm -rf ${BUILD_DIR}/*
+	else
+		mkdir -p ${BUILD_DIR}
+	fi
+	echo "[INFO] copy the files for the specified arch to SOURCE directory"
+	rsync -ar --files-from="${BASE_DIR}/filelist.${arch}" ${SOURCE_DIR}/ ${BUILD_DIR}/
 	if [ $? -ne 0 ]; then
-		echo "[ERROR] couldn't set ${arch} in config.json... abort"
+		echo "[ERROR] couldn't copy files... abort"
 		exit 5
 	fi
-	mv ${DEST_DIR}/bin-${arch} ${DEST_DIR}/bin
-	mv ${DEST_DIR}/lib-${arch} ${DEST_DIR}/lib
-	mv ${DEST_DIR}/twonkyserver-${arch} ${DEST_DIR}/twonkyserver
-
+	echo "[INFO] set ${arch} in config.json"
+	sed -i -e "s/##ARCH##/${arch}/" ${BUILD_DIR}/CONTROL/config.json
+	if [ $? -ne 0 ]; then
+		echo "[ERROR] couldn't set ${arch} in config.json... abort"
+		exit 6
+	fi
+	echo "[INFO] move arch dependence folder in build directory"
+	mv ${BUILD_DIR}/bin-${arch} ${BUILD_DIR}/bin
+	mv ${BUILD_DIR}/lib-${arch} ${BUILD_DIR}/lib
+	mv ${BUILD_DIR}/twonkyserver-${arch} ${BUILD_DIR}/twonkyserver
+	echo "[INFO] copy common twonkyserver/cgi-bin/*.{desc,location} to build directory"
+	cp -f ${SOURCE_DIR}/twonkyserver/cgi-bin/* ${BUILD_DIR}/twonkyserver/cgi-bin/
+	[ -f ${BUILD_DIR}/twonkyserver/cgi-bin/convert ] && rm -f ${BUILD_DIR}/twonkyserver/cgi-bin/convert
+	[ -f ${BUILD_DIR}/twonkyserver/cgi-bin/ttu ] && mv -f ${BUILD_DIR}/twonkyserver/cgi-bin/ttu ${BUILD_DIR}/bin
 	# apkg-tools.py is quite a simple script - doesn't allow any output
 	# directory to be specified. So we have to do it yourselfs
 	echo "[INFO] finally create the APK ${arch} package in ${TMP_DIR}"
 	CUR_DIR=$PWD
 	cd $TMP_DIR
-	chown -R root:root ${DEST_DIR}/*
-	$APKGTOOL create "${DEST_DIR}"
+	#chown -R root:root ${BUILD_DIR}/*
+	chown -R 999:999 ${BUILD_DIR}/*
+	$APKGTOOL create "${BUILD_DIR}"
 	if [ $? -ne 0 ]; then
 		cd $CUR_DIR
 		echo "[ERROR] couldn't create APK for ${arch}... abort"
-		exit 6
+		exit 7
 	fi
 	echo "[INFO] copy and rename the created APK to ${CUR_DIR}"
 	OUTPUT_FILE=$(basename *${arch}.apk)

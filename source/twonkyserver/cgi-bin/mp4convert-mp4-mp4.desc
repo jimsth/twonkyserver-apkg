@@ -1,0 +1,4 @@
+exec: mp4convert $infile $outfile $extraparams
+from=video/mp4
+to=video/mp4
+synchronous

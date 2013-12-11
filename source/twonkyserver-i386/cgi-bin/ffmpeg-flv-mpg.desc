@@ -1,8 +1,0 @@
-# transcode Flash video to MPEG-2 video
-#(c) 2008 by PacketVideo
-exec: ffmpeg -i $infile -vcodec mpeg2video $outfile
-# capabilities
-from=video/flv
-to=video/mpeg
-asynchronous
-priority=idle

@@ -1,8 +1,0 @@
-# transcode mkv video to MPEG-2
-#(c) 2009 by PacketVideo
-exec: ffmpeg -threads 2 -i $infile -vcodec mpeg2video -sameq -acodec copy -f vob -copyts -y $outfile 
-# capabilities
-from=video/x-matroska
-to=video/mpeg
-synchronous
-priority=idle

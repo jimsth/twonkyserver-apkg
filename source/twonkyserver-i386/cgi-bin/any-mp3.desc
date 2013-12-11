@@ -1,8 +1,0 @@
-# transcode audio (mp4, wav, wma to mp3)
-#(c) 2008 by PacketVideo
-exec: any2mp3 $infile $outfile -br 128000 -sps 44100
-# capabilities
-from=audio/all
-to=audio/mpeg
-asynchronous
-priority=idle

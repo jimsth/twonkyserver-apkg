@@ -1,8 +1,0 @@
-# transcode video
-#(c) 2008 by PacketVideo
-exec: ffmpeg -i $infile -vcodec mpeg2video -b 1000K $outfile
-# capabilities
-from=video/x-divx
-to=video/mpeg
-asynchronous
-priority=idle

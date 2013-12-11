@@ -2,14 +2,16 @@
 export HOST_ARCH=$(uname -m)
 export NAME="Twonky Server"
 
-export PKG_PATH=/usr/local/AppCentral/twonkyserver
 export DB_PATH=/volume1/.@twonkymedia
+export PKG_PATH=/usr/local/AppCentral/twonkyserver
 export VAR_TWONKY=/var/twonky
-export PKG_DAEMON="$PKG_PATH/twonkyserver/twonkystarter"
+
 export CONFIG_FILE="$PKG_PATH/etc/twonkyserver7.ini"
 export LOG_FILE="$DB_PATH/log/twonkyserver7.log"
+export PKG_DAEMON="$PKG_PATH/twonkyserver/twonkystarter"
 
-export USER=root
+export USER=admin
+export GROUP=administrators
 export STOP_TIMEOUT=10
 
 # Default options for daemon
@@ -29,7 +31,7 @@ check_db () {
 start_daemon () {
     check_db
     start-stop-daemon --start \
-    --chuid $USER \
+    --chuid ${USER}:${GROUP} \
     --exec $PKG_DAEMON -- $OPTIONS
 }
 
@@ -43,7 +45,7 @@ wait_pid () {
         STATUS=`echo $?`
 
         if [ $STATUS -eq 1 ]; then
-            return 1
+            break 1
         fi
 
         TIME=$((TIME+1))

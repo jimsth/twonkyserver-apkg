@@ -28,7 +28,7 @@
 	"port":[
 	  "9000"
 	],
-	"boot-priority":{
+ 	"boot-priority":{
 	  "start-order":95,
 	  "stop-order":35
 	},

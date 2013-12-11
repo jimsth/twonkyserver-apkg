@@ -1,4 +1,0 @@
-exec: mp4convert $infile $outfile $extraparams
-from=video/3gpp
-to=video/mp4
-synchronous
