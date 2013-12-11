@@ -6,8 +6,7 @@
 #
 
 APP_NAME=$(basename $0)
-# APP_PATH=$(dirname $(realpath $0))
-APP_PATH=$(dirname ${PWD}/$0)
+APP_PATH=$(dirname $(readlink -f $0))
 APKGTOOL=$APP_PATH/apkg-tools.py
 
 # echo "app name: $APP_NAME, app path: $APP_PATH, APKGTOOL: $APKGTOOL"
@@ -58,7 +57,7 @@ for arch in $APK_ARCH; do
 	if [ ! -f ${SOURCE_DIR}/twonkyserver-${arch}/twonkystarter ]; then
 		echo "[ERROR] can't find Twonky Server executable"
 		echo "[ERROR] did you forget to unpack the Twonky Server files into " \
-			"${SOURCE}/twonkyserver-${arch} directory?"
+			"${SOURCE_DIR}/twonkyserver-${arch} directory?"
 		exit 4
 	fi
 	echo "[INFO] clean the output folder"

@@ -1,19 +1,19 @@
 #!/bin/sh
 
+export PKG_NAME="Twonky Server"
 export PKG_ETC_DIR="$APKG_PKG_DIR/etc"
 export PKG_TMP_DIR="$APKG_PKG_DIR/tmp"
 export DB_PATH="/volume1/.@twonkymedia"
-export APP_INFO_MSG="applog --level 0 --package \"$APKG_PKG_NAME\" --event"
 
 case "$APKG_PKG_STATUS" in
 		install)
 				# create Twonky DB directory if not already existing
 				if [ ! -d $DB_PATH ]; then
-					$APP_INFO_MSG "Twonky DB directory doesn't exist, it will created"
+					applog --level 0 --package "$PKG_NAME" --event "Twonky DB directory doesn't exist, it will created"
 					mkdir -p $DB_PATH/twonkyserver
 					chown -R admin:administrators $DB_PATH
 				else
-					$APP_INFO_MSG "Twonky DB directory does already exist"
+					applog --level 0 --package "$PKG_NAME" --event "Twonky DB directory does already exist"
 				fi
 				;;
 		upgrade)
