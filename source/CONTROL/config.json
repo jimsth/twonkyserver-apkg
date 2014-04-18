@@ -26,7 +26,10 @@
   },
   "register":{
 	"port":[
-	  "9000"
+	  "U1030",
+	  "U1900",
+	  "T9000",
+	  "U9030"
 	],
  	"boot-priority":{
 	  "start-order":95,
