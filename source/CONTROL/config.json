@@ -2,7 +2,7 @@
   "general":{
 	"package":"twonkyserver",
 	"name":"Twonky Server",
-	"version":"7.2.6-tk",
+	"version":"7.2.7-r1",
 	"depends":[],
 	"conflicts":[],
 	"developer":"PacketVideo",
