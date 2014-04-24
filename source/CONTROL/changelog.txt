@@ -1,3 +1,112 @@
+# What’s New in Twonky Server v7.2.7 #
+
+## 1 New feature ##
+- Added support for DSD file format 
+
+## 2 Improvement ##
+- Added device detection for Samsung TV F series (2013)
+- Improved the Samsung TV device adaptation for better handling of full HD pictures
+- New ini-property to define album art behavior:
+  If a content item does not contain embedded album art, Twonky Server can use album art from other media items within corresponding album.
+  Default value is 0, i.e. album art fallback enabled for music and videos. disablealbumart_fallback=0
+  If set to 1, album art fallback for music will be disabled i.e. the embedded album art for one music title isn't used for all music items in the view.
+  If set to 2, album art fallback for videos will be disabled i.e. the embedded album art for one video item isn't used for all video items in the view.
+  If set to 3, album art fallback for both music and videos will be disabled.
+- Fixed problem in UTF-8 encoding for certain three-byte UTF-8 characters
+- Network communication improvements on MAC
+- Fixed problem in Web-based beam control when using mute.
+- Default settings change! Per default time seek generation is disabled for Twonky Server. This means that initial scan will be a lot faster but some clients won't any longer be able to time seek on the media. The time seek generation can be turn on again by setting disabletimeseek=0 in the ini-file
+- Added 8Player to Twonky’s device DB
+
+## 3 Bug fixes ##
+- Fixed a bug when removable drive (e.g. USB-Stick) was plugged or unplugged.
+- Fixed a bug in the webUI when changing the default-navigation tree. When changed repeatedly the page went unresponsive.
+- Fixed a bug for WAV-files with high sampling rates that couldn't be played at WindowsMediaPlayer
+- Fixed the wrong album art when navigating through Genre/Artist/Album
+- Fixed some long existing Online Services issues regarding Facebook linking
+- Fixed a bug for Twonky Server on Linux that crashed when scanning time seek information from .wma files.
+- Fixed a bug where Twonky Server sometimes stopped responding when scanning mp4-files
+- Fixed a bug in the watchdog caused by the former bug.
+- Fixed a crash when removable media drives with shares were removed without shutting down the server (power-off instead of shutdown)
+- Fixed a problem that sometimes occurred when Twonky Server was set up to prohibit being aggregated. Some clients received an ‘access denied’ thereafter.
+- Further fixes for the Online Services for Linking and Unlinking issues 1 of 15
+- Fixed a bug for Twonky Server UI that didn't properly work on IE8
+- Fixed a bug that sometimes lead to Twonky Server getting unresponsive during shutdown when AirPlay (Apple TV) or Roku are in the network.
+- Fixed default shares on MacOS. Previously the entries for music and photo folders were incorrectly set.
+- Fixed that a remote browser accessing the WebUI of Twonky Server was identified as Twonky Server in the media receiver list.
+- Fixed a bug where sometimes the default gateway was not set.
+
+## 4 Known issues ##
+- Same named albums and sorting behavior of Twonky Server: When you have same named albums from different artists in your media collection and you chose the "Album" navigation the titles from both albums will end up together in one view. We checked how to improve this behavior but each fix we found would have caused tremendous performance problems so we decided not to offer a fix.
+  In case you have this problem we can only suggest that you manually change the metadata of the album(s) that cause this behavior.
+
+
+# What’s New in Twonky Server v7.2.6 #
+
+## 1 Improvement ##
+- Improved Web UI behavior when the "ignored directories" were changed.
+- Improved the installation behavior. If upload or aggregation is disabled for Twonky Server neither the upload nor the mirror folders get created. This is only visible at initial installation - if the upload or mirror folders are present from a former installation of Twonky Server they won't get removed.
+- The upload and mirrored folders are configurable now. The new properties can be set in the ini-file and are named:
+  - uploadmusicdir
+  -uploadpicturedir
+  -uploadvideodir
+  -mirroredmusicdir
+  -mirroredpicturedir
+  -mirroredvideodir
+  If upload and mirroring is disabled no respective folder will be created by Twonky Server.
+- We cleaned up the navigation tree. Therefore we eradicated some categories which were duplicates. No functionality was lost with the changes but Twonky Server got faster and uses less memory now.
+- Improved Twonky Server’s subtitle support. The server is now able to add subtitle files after the content has already been scanned. Previously, subtitle files had to be placed there prior to the content.
+ This improvement works only for systems that support file system event notifications.
+
+## 2 Bug fixes ##
+- Fixed a bug at browsing the online videos which sometimes led to long response times
+- Fixed a bug at the Web UI which always indicated that Twonky Server is streaming although the streaming was stopped. Note: This behavior can still be seen on devices with huge buffers.
+- Fixed the Windows Start menu entry that pointed to twonkyforum instead of community.twonky.com
+- Fixed the bug for Twonky Server on Linux system where configuration files were written into two different folders
+- Several bugs related to the Online Services were fixed
+- Fixed some problems for the persistent device database. The device types are better recognized now and the client expiration time was fixed. Also problems switching networks or having more than on network adapter accessible were addressed.
+- Fixed that a remote browser accessing the Web UI of Twonky Server was identified as Twonky Server in the media receiver list.
+- Fixed default shares on Mac. Previously the entries for music and photo folders were incorrectly set.
+- Fixed a problem with the tray app on MacOS where the server wasn’t terminated correctly so that the server couldn’t be started and stopped from the tray app properly.
+
+## 3 Known issues ##
+- Some Online Services problems aren't fixed: Occasionally seen problems with facebook feeds
+- For Genre/Artist/Album and Playlists the server offers wrong albumart: Instead of the first valid albumart the default albumart is used as thumbnail.
+- We have seen occasional hangs in the web UI when the navigation tree view was changed repeatedly.
+
+
+# What’s New in Twonky Server v7.2.5-2 #
+## 1 Bug fixes ##
+- Fixed two memory leaks
+- Updated client detection to prevent duplicated entries in the media receivers list
+
+
+# What’s New in Twonky Server v7.2.5-1(Linux-only) #
+
+## 1 Bug fixes ##
+- Fixed a bug where Linux systems with a Kernel version >=3.10 suffered from heavy CPU-load
+
+
+# What’s New in Twonky Server v7.2.5  #
+
+## 1 Bug fixes ##
+- Fixed a bug in the webbrowse pages that led to missing folder thumbnails and slow performance.
+- Fixed the MimeTypeSuppress-Quirk in the client adaptations
+- Fixed a bug where playlist still were visible although the content was not shared any longer. Please note: If you un-share content that also is part of a playlist you have to manually trigger a rescan in order to find this change again in your playlists.
+- Fixed video playlists. Playlists (either iTunes or WMP) are recognized as video playlists now. In case of mixed playlists the lists will be available at music-playlists.
+- Fixed a bug where the picture orientation wasn't taken into consideration of the thumbnails.
+
+
+# What’s New in Twonky Server v7.2.4 #
+
+## 1 Improvement ##
+- Added aiff metadata support
+- When installing on a Windows system it's possible to choose that Twonky Server isn't launched directly after installation. Settings option can be found in under “custom installation”. (Rolled back in 7.2.5)
+
+## 2 Bug fixes ##
+- Album art extracted by Twonky Server is no longer added to the shared locations.
+
+
 # What’s New in Twonky Server v7.2.3 #
 
 ## 1 New Feature ##
@@ -7,6 +116,7 @@
 - Fixed performance issues
 - Fixed the client adaptation for Panasonic VIERA TVs: Added the VIERA_DIVXPROFILE per default setting
 - Fixed the PlayStation recognition in the client list
+
 
 # What’s New in Twonky Server v7.2.2 #
 
@@ -20,6 +130,7 @@
 
 # What’s New in Twonky Server v7.2.1 #
 - New version because of some bundling problems.
+
 
 # What’s New in Twonky Server v7.2 #
 
