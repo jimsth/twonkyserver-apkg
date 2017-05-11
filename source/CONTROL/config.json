@@ -2,12 +2,12 @@
   "general":{
 	"package":"twonkyserver",
 	"name":"Twonky Server",
-	"version":"7.2.6-tk",
+	"version":"8.4.1",
 	"depends":[],
 	"conflicts":[],
 	"developer":"PacketVideo",
-	"maintainer":"MrK",
-	"email":"twonky-for-asustor@kupper.org",
+	"maintainer":"jimsth",
+	"email":"",
 	"website":"http://www.twonky.com",
 	"architecture":"##ARCH##",
 	"firmware":"2.0"
@@ -47,3 +47,4 @@
 	}
   }
 }
+

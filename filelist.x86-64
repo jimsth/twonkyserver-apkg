@@ -1,6 +1,6 @@
 ./bin-x86-64
-./etc/twonkyserver7-default.ini
-./etc/twonkyserver7.ini
+./etc/twonkyserver8-default.ini
+./etc/twonkyserver8.ini
 ./lib-x86-64
 ./twonkyserver-x86-64
 ./CONTROL/icon-disable.png

@@ -7,8 +7,8 @@ export PKG_PATH=/usr/local/AppCentral/twonkyserver
 export VAR_TWONKY=/var/twonky
 
 export DATA_PATH="$DB_PATH/twonkyserver"
-export CONFIG_FILE="$PKG_PATH/etc/twonkyserver7.ini"
-export LOG_FILE="$DB_PATH/log/twonkyserver7.log"
+export CONFIG_FILE="$PKG_PATH/etc/twonkyserver8.ini"
+export LOG_FILE="$DB_PATH/log/twonkyserver8.log"
 export PKG_DAEMON="$PKG_PATH/twonkyserver/twonkystarter"
 
 export USER=admin

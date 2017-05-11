@@ -1,75 +1,40 @@
-# What’s New in Twonky Server v7.2.3 #
+ Twonky Server 8.4.1
+Skip to end of metadata
+Go to start of metadata
+New Features
 
-## 1 New Feature ##
-- We provide a package for Raspberry Pi
+    360° image (jpg) and video (mp4) support
+    64 Bit Linux support
 
-## 2 Bug fixes ##
-- Fixed performance issues
-- Fixed the client adaptation for Panasonic VIERA TVs: Added the VIERA_DIVXPROFILE per default setting
-- Fixed the PlayStation recognition in the client list
+Improvements
 
-# What’s New in Twonky Server v7.2.2 #
+    added support for Apple Lossless Audio Codec in MP4 audio tracks for Samsung TV H series and later
 
-## 1 Bug fixes ##
-- Fixed the video thumbnail generation. Please note that the tool included with Twonky Server only supports the following codecs: .mp4, .3gp files with MPEG4 part 2 Simple Profile, H.263 Base Profile and Annex IJKT, or H.264/AVC Restricted Baseline Profile/Main Profile/High Profile (non-interlace)
-- Fixed a bug for Samsung TVs and UPC STBs where some .mp4 files couldn't be paused and resumed or played
-- Fixed a problem for Mac builds. Twonky Server now restarts after reboot
-- Fixed the Linux installer script
-- Improved performance and memory usage
+Bug fixes
+
+    fixed crash when opening a dialog box about a missing license [Mac only]
+    fixed multiple loading of the ini file if an unsupported language was configured
+    fixed playback to AppleTV 2nd and 3rd gen
+    fixed start failure when user path contains Umlauts or non-ASCII characters [Windows only]
+    fixed that AVI was sent to Apple TV as that made it hang
+    fixed that devices get an access denied if they are manually enabled in case auto-enable of new devices is turned 
+off
+    fixed that devices with 3 device description entries in the device db are not properly identified
+    fixed that start menu entry was only created for user installing the server [Windows only]
+
+Known issues
+
+    "My Russound" app does not show the correct album art when used with Twonky Server
+    UPnP inspector gets confused when Twonky Server provides multiple artist tags with different roles
+    audiobooks can not be aggregated by other Twonky Servers
+    beaming media from Mediatomb to Samsung TV D series does not work
+    duration calculation of MPEG2TS files is not accurate if timeseek generation is disabled
+    error in Mac OS logs for filedb-delete is actually only a warning; operation is not impacted
+    thumbnails of some rotated images do not show up correctly in webUI
+    updating from 7.x to 8.x with preserve settings leaves some files in c:\
+     "Try Again" button in the web UI to re-check if the EMail has been verified, does not work if the email has been 
+verified on another device. Workaround: restart the server
+    new translation strings are missing for Italian, Spanish, Dutch, Russian, Japanese, Chinese and Korean
+    playback to AppleTV 4th gen with tvOS 10.2 or later is not supported
 
 
-# What’s New in Twonky Server v7.2.1 #
-- New version because of some bundling problems.
-
-# What’s New in Twonky Server v7.2 #
-
-## 1 General ##
-- New branding
-- TwonkyServer Free abandoned
-- TwonkyServer Special renamed to Twonky Server
-- As of April 2, 2013, www.mytwonky.com is no longer active. mytwonky nodes in the Twonky Server navigation tree are renamed to Online Services. Online services can be configured directly through the Twonky Server settings pages.
-- Twonky WebDAV server abandoned
-
-##￼2 New Features ##
-- New device database behavior : The client device database is persistent now. Client devices found in the same network as the server will stay in the database even if they are turned off. Only after two weeks unseen by Twonky Server they will vanish from the list.
-- Added support for beaming to Roku box (Roku 2 XS)
-- Added Airplay support for beaming from Linux systems
-
-## 3 Improvements ##
-- Improved support for AcePlayer
-- Improved the MP4 profile recognition support
-- Improve detection of non-ASCII Asian character encodings
-- Improved FLV audio-only support
-- Improved OGG video-only support
-- Improved handling of album and album artist tags for music items
-- if an album artist is given in addition to the artist then Twonky Server shows the album artist on album level and the artist on file level
-- it is possible to enable up to three different genres per item in single tags instead of a comma separated list. The device profile needs to be modified: add <Quirk>TAG_PER_GENRE</Quirk> to the device profile which can handle more than one genre tag
-- The directory lists when browsing Twonky Server on a Linux system via the webUI is alphabetical now.
-
-## 4 Bug fixes ##
-- Fixed a bug where iTunes playlists were shared even if the sharing location was disabled
-- Fixed a problem for metadata scanning of .png files
-- Fixed a problem for the return number of scanned items that sometimes gave wrong results
-- Extended the blacklisted directories for MacOS
-- Fixed a bug for .isma files that were scanned as video instead of audio.
-- Changing navigation tree settings does not have an effect towards the webUI pages any longer. webUI will always show the advanced navigation tree view whereas view settings will only be available for the connected devices.
-- Fixed a bug for .avi files that couldn't be pushed to XBOX 360
-- Fixed a bug for files that were autocopied with wrong file-extension when non-Twonky servers are aggregated.
-- Fixed a bug for wrongly scanned .tp video files
-- Fixed a problem for servers that were connected to my.twonky.com. There were problems when the network was changed in between.
-- Fixed the embedded album art problem for WDTV Live Plus HD
-- Fixed a bug for Beaming a Radio Station on Apple TV with Twonky Server running on MacOS
-- Fixed the password-protection for the configuration settings in the webUI Either delete the settings on the .ini-file or via rpc/set_option?accesspwd= In this case an authentication with the old password is needed
-- Fixed a problem where the sharing page was inaccessible when no clients were detected.
-- Fixed a bug for .mov videos where the resolution wasn't extracted correctly
-- Fixed a bug when music items with multiple genres were removed
-- Fixed a bug which caused problems with pictures on WD players
-- Fixed a problem when multiple Twonky Servers were in the same network. My.twonky.com had problems displaying the servers
-- Fixed: Blackberry AMR files get indexed now
-- Fixed some smaller issues on the webUI
-- Fixed a problem for files that have no date set in the metadata
-- Fixed handling for OGG-files w/o metadata. Default date is now system creation date
-- Fixed a bug where the friendlyname of an aggregated server sometimes was empty
-
-## 5 Other changes ##
-- New terms of service (TOS) 
